@@ -1,50 +1,94 @@
-# Fake Product Identification using Blockchain
+<div align="center">
 
-## Packages Required:-
-- Truffle v5.6.7 (core: 5.6.7)
-- Ganache v7.5.0
-- Solidity v0.5.16 (solc-js)
-- Node v15.8.0
-- Web3.js v1.7.4
-- npm 7.5.1
+# fpd-blockchain
 
-## Other Requirements:-
-1. Any chromium based browser i.e. Chrome 
-2. Metamask browser extension
-    
-## setup process 
+fake product identification on the blockchain
 
-1. Clone the project
-```
-git clone https://github.com/A4ANK/Fake-Product-Identification.git
-```
-2. Go to the project folder, open terminal there and run following command to install required node_modules:-
-```
+[![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat-square&logo=solidity&logoColor=white)](https://soliditylang.org)
+[![Truffle](https://img.shields.io/badge/Truffle-5E464D?style=flat-square&logo=truffle&logoColor=white)](https://trufflesuite.com)
+[![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=flat-square&logo=ethereum&logoColor=white)](https://ethereum.org)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+</div>
+
+---
+
+a decentralized app (DApp) that lets users verify product authenticity on-chain. scan a product's QR code with your camera, the app queries the smart contract, and you instantly know if it's real or counterfeit — no central database, no middleman.
+
+---
+
+## stack
+
+**blockchain**
+- **truffle suite** — smart contract compilation, testing, and deployment
+- **solidity** — smart contracts in `contracts/`
+- **@truffle/hdwallet-provider** — wallet signing and network connectivity
+
+**frontend**
+- **html + css + js** — plain UI with Bootstrap (compiled from SASS in `src/scss/`)
+- **lite-server** — lightweight local server for the static frontend
+- **html5-qrcode** — camera-based QR code scanning for product verification
+
+---
+
+## setup
+
+```bash
+git clone https://github.com/5R4V4N/fpd-blockchain.git
+cd fpd-blockchain
 npm install
 ```
-3. Compile contract source files. (Compilation and deployment can be done using truffle migrate):-
+
+you'll also need truffle installed globally:
+
+```bash
+npm install -g truffle
 ```
+
+for local blockchain testing, install [Ganache](https://trufflesuite.com/ganache) and have a workspace running before you migrate.
+
+---
+
+## running it
+
+start the frontend:
+
+```bash
+npm run dev
+```
+
+then open `http://localhost:3000`.
+
+---
+
+## smart contract commands
+
+compile contracts into JSON artifacts (`build/`):
+
+```bash
 truffle compile
 ```
-4. Open Ganache, (to setup local blockchain)
-    - crerate new workspace
-    - add truffle-config.js  in truffle project 
-    - change port to 7545 in server settings (same as port in truffle-config.js)
-5. In chrome, open metamask 
-   - add new test network using  
-        - NETWORK ID (i.e. 5777 ,from Ganache Server settings) 
-        - RPC SERVER (i.e HTTP://127.0.0.1:8545 ,from Ganache Server settings)
-        - CHAIN CODE (i.e. 1337)
-   - import account using private key of any account from local blockchain available in Ganache.
-6. In terminal, run following commands:-
-- Run migrations to deploy contracts.
-```
+
+deploy to your active Ganache workspace or a testnet:
+
+```bash
 truffle migrate
 ```
 
-- To start a server and it will open a homepage (index.html) file in the default browser.
+force redeploy if contracts already exist:
+
+```bash
+truffle migrate --reset
 ```
-npm run dev 
-``` 
-7. Login to metamask ,and connect the added account to local blockchain (i.e.localhost:3000)
-8. Interact with website
+
+run unit tests in `test/`:
+
+```bash
+truffle test
+```
+
+---
+
+<div align="center">
+made by <a href="https://github.com/5R4V4N">@5R4V4N</a>
+</div>
